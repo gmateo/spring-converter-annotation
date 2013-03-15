@@ -10,6 +10,7 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.DefaultConversionService;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -26,8 +27,7 @@ public class ConverterRegistryPostProcessor implements BeanDefinitionRegistryPos
 
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         Map<String, Object> beansWithAnnotation = beanFactory.getBeansWithAnnotation(TypeConverter.class);
-        Set converters = new HashSet();
-        converters.addAll(beansWithAnnotation.values());
+        Collection converters = beansWithAnnotation.values();
         DefaultConversionService conversionService = (DefaultConversionService) beanFactory.getBean("conversionService");
         for (Object converter : converters) {
             conversionService.addConverter((Converter<?, ?>) converter);
