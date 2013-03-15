@@ -1,6 +1,8 @@
-package org.anotes.springexample;
+package org.anotes.springexample.converter;
 
 import org.anotes.spring.stereotype.TypeConverter;
+import org.anotes.springexample.Client;
+import org.anotes.springexample.Person;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.convert.converter.Converter;
 
