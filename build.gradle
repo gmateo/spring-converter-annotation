@@ -1,0 +1,27 @@
+project.ext {
+    version = '1.0'
+    springVersion = "3.2.1.RELEASE"
+    slf4jVersion = "1.6.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+							 
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile "org.slf4j:jcl-over-slf4j:$project.slf4jVersion",
+		"org.slf4j:jul-to-slf4j:$project.slf4jVersion"
+	compile "org.springframework:spring-beans:$project.springVersion"
+	compile "org.springframework:spring-context:$project.springVersion"
+	compile "org.springframework:spring-core:$project.springVersion"
+	runtime "org.slf4j:slf4j-log4j12:$project.slf4jVersion"
+	testCompile "junit:junit:4.10"
+	testCompile "org.springframework:spring-test:$project.springVersion"
+}
+
+jar {
+	manifest.attributes provider: 'gradle'
+}
